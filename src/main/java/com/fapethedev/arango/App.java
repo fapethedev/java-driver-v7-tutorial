@@ -5,6 +5,8 @@ import com.arangodb.ArangoCollection;
 import com.arangodb.ArangoDB;
 import com.arangodb.ArangoDatabase;
 import com.arangodb.entity.BaseDocument;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 
 import java.util.Date;
 
@@ -41,5 +43,14 @@ public class App
         System.out.println("Key: " + readDocument.getKey());
         System.out.println("Attribute a: " + readDocument.getAttribute("Apprentice"));
         System.out.println("Attribute b: " + readDocument.getAttribute("Date"));
+
+        System.out.println("Creating a document from Jackson JsonNode...");
+        String keyJackson = "myJacksonKey";
+        JsonNode jsonNode = JsonNodeFactory.instance.objectNode()
+                .put("_key", keyJackson)
+                .put("name", "fapethedev")
+                .put("inc", 53);
+        System.out.println("Inserting document from Jackson JsonNode...");
+        collection.insertDocument(jsonNode);
     }
 }
