@@ -70,5 +70,17 @@ public class App
         System.out.println("Reading document as JSON String...");
         RawJson readJson = collection.getDocument(keyJson, RawJson.class);
         System.out.println(readJson.get());
+
+        doc.addAttribute("section", "databases, collections, documents");
+        System.out.println("Updating document ...");
+        collection.updateDocument(key, doc);
+
+        System.out.println("Reading updated document ...");
+        BaseDocument updatedDocument = collection.getDocument(key, BaseDocument.class);
+
+        System.out.println("Key: " + updatedDocument.getKey());
+        System.out.println("Attribute a: " + updatedDocument.getAttribute("Apprentice"));
+        System.out.println("Attribute b: " + updatedDocument.getAttribute("Date"));
+        System.out.println("Attribute c: " + updatedDocument.getAttribute("section"));
     }
 }
