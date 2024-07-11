@@ -82,5 +82,8 @@ public class App
         System.out.println("Attribute a: " + updatedDocument.getAttribute("Apprentice"));
         System.out.println("Attribute b: " + updatedDocument.getAttribute("Date"));
         System.out.println("Attribute c: " + updatedDocument.getAttribute("section"));
+
+        System.out.println("Deleting document ...");
+        collection.deleteDocument(key);
     }
 }
