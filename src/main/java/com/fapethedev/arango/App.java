@@ -52,5 +52,12 @@ public class App
                 .put("inc", 53);
         System.out.println("Inserting document from Jackson JsonNode...");
         collection.insertDocument(jsonNode);
+
+        System.out.println("Reading document as Jackson JsonNode...");
+        JsonNode readJsonNode = collection.getDocument(keyJackson, JsonNode.class);
+
+        System.out.println("Key: " + readJsonNode.get("_key").textValue());
+        System.out.println("Attribute a: " + readJsonNode.get("name").textValue());
+        System.out.println("Attribute b: " + readJsonNode.get("inc").intValue());
     }
 }
