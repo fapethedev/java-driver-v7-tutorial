@@ -66,5 +66,9 @@ public class App
         RawJson json = RawJson.of("{\"_key\":\"" + keyJson + "\",\"a\":\"Baz\",\"b\":64}");
         System.out.println("Inserting document from JSON String...");
         collection.insertDocument(json);
+
+        System.out.println("Reading document as JSON String...");
+        RawJson readJson = collection.getDocument(keyJson, RawJson.class);
+        System.out.println(readJson.get());
     }
 }
