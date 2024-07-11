@@ -6,7 +6,7 @@ import com.arangodb.ArangoDB;
 import com.arangodb.ArangoDatabase;
 import com.arangodb.entity.BaseDocument;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 public class App
 {
@@ -31,7 +31,7 @@ public class App
         String key = "myKey";
         BaseDocument doc = new BaseDocument(key);
         doc.addAttribute("Apprentice", "Fapethedev");
-        doc.addAttribute("Date", LocalDateTime.now());
+        doc.addAttribute("Date", new Date());
         System.out.println("Inserting document...");
         collection.insertDocument(doc);
     }
