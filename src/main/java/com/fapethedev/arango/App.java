@@ -5,6 +5,7 @@ import com.arangodb.ArangoCollection;
 import com.arangodb.ArangoDB;
 import com.arangodb.ArangoDatabase;
 import com.arangodb.entity.BaseDocument;
+import com.arangodb.util.RawJson;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 
@@ -59,5 +60,11 @@ public class App
         System.out.println("Key: " + readJsonNode.get("_key").textValue());
         System.out.println("Attribute a: " + readJsonNode.get("name").textValue());
         System.out.println("Attribute b: " + readJsonNode.get("inc").intValue());
+
+        System.out.println("Creating a document from JSON String...");
+        String keyJson = "myJsonKey";
+        RawJson json = RawJson.of("{\"_key\":\"" + keyJson + "\",\"a\":\"Baz\",\"b\":64}");
+        System.out.println("Inserting document from JSON String...");
+        collection.insertDocument(json);
     }
 }
