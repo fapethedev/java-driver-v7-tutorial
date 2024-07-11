@@ -34,5 +34,12 @@ public class App
         doc.addAttribute("Date", new Date());
         System.out.println("Inserting document...");
         collection.insertDocument(doc);
+
+        System.out.println("Reading document...");
+        BaseDocument readDocument = collection.getDocument(key, BaseDocument.class);
+
+        System.out.println("Key: " + readDocument.getKey());
+        System.out.println("Attribute a: " + readDocument.getAttribute("Apprentice"));
+        System.out.println("Attribute b: " + readDocument.getAttribute("Date"));
     }
 }
