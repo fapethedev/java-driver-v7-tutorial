@@ -13,8 +13,10 @@ public class App
     public static void main( String[] args )
     {
         ArangoDB arangoDB = new ArangoDB.Builder()
-        .host("localhost", 8529)
-        .build();
+                .host("localhost", 8529)
+                .user("root")
+                .password("tbDmKOCz0UaTU3LL")
+                .build();
 
 //      Let’s connect to or create a new database:
         ArangoDatabase db = arangoDB.db("javadriverv7tutoraildb");
