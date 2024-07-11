@@ -1,6 +1,7 @@
 package com.fapethedev.arango;
 
 
+import com.arangodb.ArangoCollection;
 import com.arangodb.ArangoDB;
 import com.arangodb.ArangoDatabase;
 
@@ -16,5 +17,10 @@ public class App
         ArangoDatabase db = arangoDB.db("javadriverv7tutoraildb");
         System.out.println("Creating database...");
         db.create(); // Not possible if using the generated University database
+
+//      Now let’s create our first collection:
+        ArangoCollection collection = db.collection("firstCollection");
+        System.out.println("Creating collection...");
+        collection.create();
     }
 }
