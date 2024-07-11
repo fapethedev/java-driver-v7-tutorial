@@ -42,5 +42,16 @@ public class AqlQueries
         catch (IOException e) {
             System.out.println(e.getMessage());
         }
+
+//      Deleting all the collection we create before
+        String deleteQuery = "FOR t IN firstCollection FILTER t.name == @name "
+                + "REMOVE t IN firstCollection LET removed = OLD RETURN removed";
+        System.out.println("Executing delete query ...");
+        try (ArangoCursor<BaseDocument> cursor = db.query(deleteQuery, BaseDocument.class, bindVars)) {
+            cursor.forEach(aDocument -> System.out.println("Key: " + aDocument.getKey()));
+        }
+        catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
